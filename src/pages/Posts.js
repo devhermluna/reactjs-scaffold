@@ -3,7 +3,7 @@ import Post from '../components/posts/post';
 import PostsHOC from '../HOC/PostsHOC';
 
 class Posts extends Component {
-  render() {
+  render () {
     const postItems = this.props.posts.map(post => (
       <Post post={post} key={post.id} />
     ));

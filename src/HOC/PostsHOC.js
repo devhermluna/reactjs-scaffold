@@ -15,6 +15,11 @@ export default (WrappedComponent) => {
       this.getDataPosts()
     }
 
+    shouldComponentUpdate (nextProps, nextState) {
+      if (this.props.posts !== nextProps.posts) return true
+      else if (this.state.isFetchingData !== nextState.isFetchingData) return true
+    }
+
     async getDataPosts () {
       await this.props.fetchPosts()
 
