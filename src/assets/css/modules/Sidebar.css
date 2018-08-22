@@ -1,0 +1,13 @@
+#wemade-solutions-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  background: white;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.04);
+}
+
+#wemade-solutions-sidebar.collapse {
+  left: -300px;
+}

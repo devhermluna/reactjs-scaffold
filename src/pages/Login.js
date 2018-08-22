@@ -10,17 +10,15 @@ class Login extends Component {
       username: '',
       password: ''
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.sendForm = this.sendForm.bind(this);
   }
 
-  handleChange (e) {
+  handleChange = ({ target }) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [target.name]: target.value
     })
   }
 
-  sendForm (e) {
+  sendForm = (e) => {
     e.preventDefault();
     if (this.state.username === 'admin@wemade.no' && this.state.password === 'qweasd') {
       this.props.authenticateUser()

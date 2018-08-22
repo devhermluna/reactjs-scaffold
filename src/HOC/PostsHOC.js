@@ -29,9 +29,9 @@ export default (WrappedComponent) => {
     }
 
     render () {
-      return this.state.isFetchingData ? 
-        <PostLoader/> : 
-        <WrappedComponent {...this.props}/>
+      return this.state.isFetchingData
+        ? <PostLoader/> 
+        : <WrappedComponent {...this.props}/>
     }
   }
 

@@ -1,0 +1,62 @@
+import React, { Component } from 'react';
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import PrivateRoutes from './PrivateRoutes'
+
+// pages/components
+import Login from '../pages/Login';
+import Dashboard from '../pages/Dashboard';
+import Sales from '../pages/Sales';
+import Contacts from '../pages/Contacts';
+import Applications from '../pages/Applications';
+import Feeds from '../pages/Feeds';
+import News from '../pages/News';
+
+const PRoutes = [
+  { path: '/dashboard', component: Dashboard },
+  { path: '/sales', component: Sales },
+  { path: '/sales/:orderType/create', component: CreateSalesOrder },
+  { path: '/sales/:orderType/:id', component: SalesOrder },
+  { path: '/contacts', component: Contacts },
+  { path: '/contacts/contact/:id', component: Contact },
+  { path: '/apps', component: Applications },
+  { path: '/apps/app/:id', component: Application },
+  { path: '/feeds', component: Feeds },
+  { path: '/feeds/feed/:id', component: Feed },
+  { path: '/news', component: News }
+]
+
+class PageRouter extends Component {
+  render () {
+    return (
+      <Router>
+        <Switch>
+          <Route path="/" exact render={() => (
+            this.props.isLoggedIn
+            ? (<Redirect to="/dashboard"/>)
+            : (<Login/>)
+          )}/>
+          {
+            PRoutes.map(({ path, component }) => <PrivateRoutes authenticated={this.props.isLoggedIn} path={path} component={component}/>)
+          }
+        </Switch>
+      </Router>
+    )
+  }
+}
+
+PageRouter.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired
+};
+
+const mapStateToProps = state => ({
+  isLoggedIn: state.auth.authenticated
+})
+
+export default connect(mapStateToProps)(PageRouter);

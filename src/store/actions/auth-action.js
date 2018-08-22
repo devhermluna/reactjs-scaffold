@@ -11,7 +11,7 @@ export const authenticateUser = () => async dispatch => {
   })
 }
 
-export const removeAuthUser = (name) => dispatch => {
+export const removeAuthUser = () => dispatch => {
   dispatch({
     type: REMOVE_USER
   })
