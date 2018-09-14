@@ -7,8 +7,9 @@ body {
 
 #wemade-solutions .content-wrapper {
   margin-left: 280px; }
-  #wemade-solutions .content-wrapper.collapse {
-    margin-left: 0px; }
+
+#wemade-solutions .content-wrapper.collapse {
+  margin-left: 0px; }
 
 .btn {
   padding: 10px 20px;
